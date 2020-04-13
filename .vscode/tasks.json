@@ -1,0 +1,162 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558 
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "g++ build active file",
+            "command": "/usr/bin/g++",
+            "args": [
+                "-g",
+                "${file}",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}"
+            ],
+            "options": {
+                "cwd": "/usr/bin"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": "build"
+        },
+        {
+            "type": "shell",
+            "label": "build pattern",
+            "command": "/usr/bin/g++",
+            "args": [
+                "-g",
+                "${workspaceFolder}/pattern/pattern.cpp",
+                "-o",
+                "${workspaceFolder}/pattern/pattern"
+            ],
+            "options": {
+                "cwd": "/usr/bin",
+                "statusbar": {
+                    "hide":true,
+                    "label":"build pattern"
+                }
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": "build"
+        },
+        {
+            "type": "shell",
+            "label": "build pascal",
+            "command": "/usr/bin/g++",
+            "args": [
+                "-g",
+                "${workspaceFolder}/pascal/pascal.cpp",
+                "-o",
+                "${workspaceFolder}/pascal/pascal"
+            ],
+            "options": {
+                "cwd": "/usr/bin",
+                "statusbar": {
+                    "hide":true,
+                    "label":"build pascal"
+                }
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": "build"
+        },
+        {
+            "type": "shell",
+            "label": "build square",
+            "command": "/usr/bin/g++",
+            "args": [
+                "-g",
+                "${workspaceFolder}/square/square.cpp",
+                "-o",
+                "${workspaceFolder}/square/square"
+            ],
+            "options": {
+                "cwd": "/usr/bin",
+                "statusbar": {
+                    "hide":true,
+                    "label":"build square"
+                }
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": "build"
+        },
+        {
+            "type": "shell",
+            "label": "pascal",
+            "command": "${workspaceFolder}/pascal/pascal",
+            "args": [
+                "<",
+                "${workspaceFolder}/pascal/input"
+            ],
+            "options": {
+                "cwd": "/usr/bin",
+                "statusbar": {
+                    "hide":false,
+                    "label":"PASCAL"
+                }
+            },
+            "problemMatcher": [
+            ],
+            "group": "test",
+            "dependsOn": ["build pascal"]
+        },
+        {
+            "type": "shell",
+            "label": "pattern",
+            "command": "${workspaceFolder}/pattern/pattern",
+            "args": [
+                "<",
+                "${workspaceFolder}/pattern/input"
+            ],
+            "options": {
+                "cwd": "/usr/bin",
+                "statusbar": {
+                    "hide":false,
+                    "label":"PATTERN"
+                }
+            },
+            "group": "test",
+            "dependsOn": ["build shell"]
+        },
+        {
+            "type": "shell",
+            "label": "square",
+            "command": "${workspaceFolder}/square/square",
+            "args": [
+                "<",
+                "${workspaceFolder}/square/input"
+            ],
+            "options": {
+                "cwd": "/usr/bin",
+                "statusbar": {
+                    "hide":false,
+                    "label":"SQUARE"
+                }
+            },
+            "group": "test",
+            "dependsOn": ["build square"]
+        },
+        {
+            "type": "shell",
+            "label": "echo",
+            "command": "echo ${file}",
+            "args": [
+            ],
+            "options": {
+                "cwd": "/usr/bin",
+                "statusbar": {
+                    "hide":false,
+                    "label":"echo"
+                }
+            },
+            "group": "test",
+        }
+    ]
+}
